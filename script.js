@@ -20,7 +20,6 @@ searchBtn.addEventListener("click", async (e) => {
   lyricsDiv.innerHTML = "";
 
   try {
-    // Search using artist and song title
     const query = `${artist} ${songTitle}`;
     const res = await fetch(
       `https://api.lyrics.ovh/suggest/${encodeURIComponent(query)}`
@@ -65,7 +64,6 @@ searchBtn.addEventListener("click", async (e) => {
   }
 });
 
-// Get lyrics when button is clicked
 resultsDiv.addEventListener("click", async (e) => {
   if (e.target.tagName !== "BUTTON") return;
 
@@ -81,22 +79,6 @@ resultsDiv.addEventListener("click", async (e) => {
       )}/${encodeURIComponent(title)}`
     );
     const data = await res.json();
-
-    if (data.lyrics) {
-      lyricsDiv.innerHTML = `
-                        <div class="bg-gray-600 p-4 rounded-lg">
-                            <h3 class="text-2xl font-bold mb-4 text-blue-300">${artist} - ${title}</h3>
-                            <div class="bg-gray-800 p-4 rounded whitespace-pre-line text-gray-200 max-h-96 overflow-y-auto">
-                                Note: Lyrics content would be displayed here, but cannot be reproduced due to copyright restrictions.
-                                <br><br>
-                                <em>To view the full lyrics, please visit the original source or a licensed lyrics website.</em>
-                            </div>
-                        </div>
-                    `;
-    } else {
-      lyricsDiv.innerHTML =
-        '<p class="text-yellow-400">Lyrics not found for this song.</p>';
-    }
   } catch (error) {
     lyricsDiv.innerHTML =
       '<p class="text-red-400">Error loading lyrics. Please try again.</p>';
@@ -104,7 +86,6 @@ resultsDiv.addEventListener("click", async (e) => {
   }
 });
 
-// Allow Enter key to trigger search
 [artistInput, songInput].forEach((input) => {
   input.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
