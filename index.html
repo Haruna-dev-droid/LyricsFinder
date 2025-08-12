@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Lyrics</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-gray-700 text-white items-center flex flex-col h-screen p-5">
+    <h1 class="text-5xl font-bold mb-4">Lyrics Finder 🎵</h1>
+    <p class="my-2 text-gray-300">
+      Search song lyrics by artist name and title
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-2 mb-4">
+      <input
+        type="text"
+        id="artist"
+        placeholder="Artist name"
+        class="border-2 border-gray-300 rounded p-2 text-black"
+      />
+      <input
+        type="text"
+        id="song-title"
+        placeholder="Song title"
+        class="border-2 border-gray-300 rounded p-2 text-black"
+      />
+    </div>
+
+    <button
+      class="bg-blue-500 hover:bg-blue-600 p-3 px-6 rounded-md transition-colors"
+      id="search-btn"
+    >
+      Search
+    </button>
+
+    <div id="results" class="mt-5 w-full max-w-2xl"></div>
+    <div id="lyrics" class="mt-5 w-full max-w-4xl"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
